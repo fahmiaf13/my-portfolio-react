@@ -19,6 +19,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat-light";
   overflow-x: hidden;
+  color: #212121;
 }
 
 code {

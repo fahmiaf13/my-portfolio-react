@@ -1,14 +1,14 @@
 import React from "react";
-import { Designer, Hero } from "../organisms";
+import { Engineer } from "../organisms";
 import About from "../organisms/about";
 
-const HomePage = () => {
+const EngineerPage = () => {
   return (
     <div className="overflow-y-hidden">
-      <Hero />
+      <Engineer />
       <About />
     </div>
   );
 };
 
-export default HomePage;
+export default EngineerPage;

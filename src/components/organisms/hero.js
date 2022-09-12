@@ -2,39 +2,58 @@ import React from "react";
 import HeroImg from "../../assets/images/hero-img.png";
 import { Link } from "react-router-dom";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { motion } from "framer-motion";
+import { containerVariants, upVariants, downVariants, imgVariants } from "../../constant/landingEffect";
 
 const Hero = () => {
   return (
-    <div className="bg-black h-screen">
-      <div className="w-full">
-        <div className="f-bold text-white text-center pt-8 grid justify-center">
-          <div className="text-5xl">HELLO</div>
-          <div className="text-5xl">I'M FAHMI ACHMAD</div>
-          <div className="f-light text-4xl">Front-End Developer</div>
-        </div>
-        <div className="flex justify-center">
-          <div className="w-4/12 grid justify-end content-center">
-            <Link to="/" className="flex">
-              <div className="w-2/12">
-                <MdOutlineArrowBackIosNew />
-              </div>
-              <div className="w-full">
-                <div className="f-bold text-white text-2xl text-end">I'M AS AN ENGINEER</div>
-                <div className="f-light text-white text-xl text-end">SEE DETAILS</div>
-              </div>
+    <motion.div className="bg-black" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+      <div className="container h-screen mx-auto flex flex-col text-white">
+        <motion.div variants={upVariants} initial="hidden" animate="visible" exit="exit">
+          <div className="f-bold text-center text-4xl mt-8">Hello, My Name is</div>
+          <div className="f-bold text-center text-4xl">Fahmi Achmad Fahrudin</div>
+          <div className="text-center text-2xl">Front-End Developer</div>
+        </motion.div>
+        <div className="grid grid-cols-3 h-full">
+          <div className="flex justify-end items-center f-bold text-xl">
+            <Link to="/engineer">
+              <motion.div className="grid grid-cols-3 group" variants={downVariants} initial="hidden" animate="visible" exit="exit">
+                <div className="h-full flex justify-end items-center">
+                  <MdOutlineArrowBackIosNew size={50} />
+                </div>
+                <div className="col-span-2 group-hover:text-slate-500 duration-300">
+                  <div className="group-hover:text-slate-500">
+                    I'M AS AN <span className="text-blue group-hover:text-slate-500">ENGINEER</span>
+                  </div>
+                  <button className="f-light text-lg">SEE DETAILS</button>
+                </div>
+              </motion.div>
             </Link>
           </div>
-          <div className="w-4/12 h-full justify-center flex">
-            <img src={HeroImg} alt="" className="w-100" />
+          <div className="flex items-end justify-center overflow-y-hidden">
+            <motion.img src={HeroImg} alt="hero" className="object-contain" variants={imgVariants} initial="hidden" animate="visible" exit="exit" />
           </div>
-          <div className="w-4/12 grid justify-start content-center">
-            <div className="f-bold text-white text-2xl">I'M AS A DESIGNER</div>
-            <div className="f-light text-white text-xl text-start">SEE DETAILS</div>
-            <button className="bg-white">Click</button>
+          <div className="flex justify-start items-center f-bold text-xl">
+            <Link to="/designer">
+              <motion.div className="grid grid-cols-3 group" variants={downVariants} initial="hidden" animate="visible" exit="exit">
+                <div className="col-span-2 group-hover:text-slate-500 duration-300">
+                  <div className="group-hover:text-slate-500">
+                    I'M AS A <span className="text-yellow group-hover:text-slate-500">DESIGNER</span>
+                  </div>
+                  <div className="flex justify-end">
+                    <button className="f-light text-lg text-center">SEE DETAILS</button>
+                  </div>
+                </div>
+                <div className="h-full flex justify-start items-center">
+                  <MdOutlineArrowForwardIos size={50} />
+                </div>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
